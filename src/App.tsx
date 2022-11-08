@@ -1,5 +1,5 @@
+import { Icon } from '@iconify/react'
 import React from 'react'
-
 function App() {
   React.useEffect(() => {
     fetch('https://github.com/octocat')
@@ -12,6 +12,8 @@ function App() {
       <h1 className="text-3xl font-bold underline bg-slate-500">
         Hello world!
       </h1>
+
+      <Icon icon="carbon:basketball" />
     </div>
   )
 }
