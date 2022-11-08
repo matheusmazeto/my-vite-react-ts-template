@@ -1,21 +1,25 @@
-import { Icon } from '@iconify/react'
 import React from 'react'
-function App() {
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+import Root from './routes/root'
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Root />,
+  },
+])
+
+if (import.meta.hot) {
+  import.meta.hot.dispose(() => router.dispose())
+}
+
+export default function App() {
   React.useEffect(() => {
     fetch('https://github.com/octocat')
       .then((response) => response.json())
       .then((response) => console.log(response))
   }, [])
 
-  return (
-    <div className="App">
-      <h1 className="text-3xl font-bold underline bg-slate-500">
-        Hello world!
-      </h1>
-
-      <Icon icon="carbon:basketball" />
-    </div>
-  )
+  return <RouterProvider router={router} />
 }
-
-export default App
